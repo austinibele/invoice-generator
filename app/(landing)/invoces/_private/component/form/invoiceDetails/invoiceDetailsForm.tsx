@@ -8,8 +8,10 @@ import CustomNumberInput from "@/app/component/ui/customNumberInput";
 import { useGetValue } from "@/app/hooks/useGetValue";
 import { Controller } from "react-hook-form";
 import { getItemValue } from "@/lib/getInitialValue";
+import { useInvoiceGeneratorTranslations } from "@/app/(landing)/invoces/_private/context/i18n/InvoiceGeneratorTranslationContext";
 
 export const InvoiceDetailsForm = () => {
+  const text = useInvoiceGeneratorTranslations();
   const value = useGetValue("currency", "INR");
   const currencyDetails = currencyList.find(
     (currency) => currency.value.toLowerCase() === value.toLowerCase()
@@ -19,16 +21,16 @@ export const InvoiceDetailsForm = () => {
     <Controller
       render={({ field: { onChange, value } }) => (
         <div className="pt-24">
-          <p className="text-2xl font-semibold pb-3">Invoice Details</p>
+          <p className="text-2xl font-semibold pb-3">{text.forms.invoiceDetails.title}</p>
           <div className="flex flex-col gap-6">
             <div>
               <p className="pt-3 font-medium text-neutral-500">
-                Select an invoice currency
+                {text.forms.invoiceDetails.selectCurrency}
               </p>
               <CurrencyInput />
             </div>
             <div>
-              <p className="py-3 font-medium text-sm text-neutral-500">Items</p>
+              <p className="py-3 font-medium text-sm text-neutral-500">{text.forms.invoiceDetails.items}</p>
               {value.map(
                 ({ itemDescription, amount, qty }: Item, index: number) => (
                   <div
@@ -56,7 +58,7 @@ export const InvoiceDetailsForm = () => {
                     </div>
                     <div className="w-full flex-1">
                       <Input
-                        placeholder="Item name"
+                        placeholder={text.forms.invoiceDetails.itemName}
                         value={itemDescription}
                         type="text"
                         onChange={(e) => {
@@ -76,7 +78,7 @@ export const InvoiceDetailsForm = () => {
                     </div>
                     <div className="w-14">
                       <Input
-                        placeholder="Qat"
+                        placeholder={text.forms.invoiceDetails.quantity}
                         value={`${qty || ""}`}
                         type="text"
                         pattern="[0-9]*"
@@ -103,7 +105,7 @@ export const InvoiceDetailsForm = () => {
                     </div>
                     <div className="w-14">
                       <Input
-                        placeholder="Price"
+                        placeholder={text.forms.invoiceDetails.price}
                         value={`${amount || ""}`}
                         type="text"
                         pattern="[0-9]*"
@@ -144,27 +146,27 @@ export const InvoiceDetailsForm = () => {
                   className="flex justify-center items-center text-orange-500 font-medium text-sm gap-2"
                 >
                   <Plus className="w-4 h-4" />
-                  <p>Add Item</p>
+                  <p>{text.forms.invoiceDetails.addItem}</p>
                 </button>
               </div>
             </div>
             <div>
               <p className="pt-3 font-medium text-sm text-neutral-500 pb-5">
-                Note
+                {text.forms.invoiceDetails.note}
               </p>
-              <CustomTextInput placeholder="Add a note" variableName="note" />
+              <CustomTextInput placeholder={text.forms.invoiceDetails.notePlaceholder} variableName="note" />
             </div>
             <div>
               <p className="pt-3 font-medium text-sm text-neutral-500 pb-5">
-                More options
+                {text.forms.invoiceDetails.moreOptions}
               </p>
               <CustomNumberInput
-                label="Discount"
+                label={text.forms.invoiceDetails.discount}
                 placeholder={`${currencyDetails?.currencySymbol}0`}
                 variableName="discount"
               />
               <CustomNumberInput
-                label="Taxes"
+                label={text.forms.invoiceDetails.taxes}
                 placeholder="0%"
                 variableName="tax"
               />

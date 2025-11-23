@@ -11,7 +11,10 @@ import { pdf } from "@react-pdf/renderer";
 import { svgToDataUri } from "@/lib/svgToDataUri";
 import { useEffect, useState } from "react";
 import { currencyList } from "@/lib/currency";
+import { useInvoiceGeneratorTranslations } from "@/app/(landing)/invoces/_private/context/i18n/InvoiceGeneratorTranslationContext";
+
 export const DownloadInvoiceButton = () => {
+  const text = useInvoiceGeneratorTranslations();
   const [status, setStatus] = useState<
     "downloaded" | "downloading" | "not-downloaded"
   >("not-downloaded");
@@ -34,9 +37,9 @@ export const DownloadInvoiceButton = () => {
   return (
     <div className="flex h-[calc(100vh-208px)] justify-center items-center">
       <div>
-        <h1 className="text-5xl font-semibold pb-6">Your invoice is ready</h1>
+        <h1 className="text-5xl font-semibold pb-6">{text.download.title}</h1>
         <p className="text-neutral-500 text-xl pb-7">
-          Please review the details carefully before downloading your invoice.
+          {text.download.description}
         </p>
         <Button
           disabled={status === "downloading"}
@@ -91,18 +94,18 @@ export const DownloadInvoiceButton = () => {
         >
           {status === "not-downloaded" && (
             <>
-              <Download className="mr-2 h-6 w-6" /> Download Invoice
+              <Download className="mr-2 h-6 w-6" /> {text.download.downloadInvoice}
             </>
           )}
           {status === "downloading" && (
             <>
               <LoaderIcon className="mr-2 h-6 w-6 animate-spin" />{" "}
-              Downloading...
+              {text.download.downloading}
             </>
           )}
           {status === "downloaded" && (
             <>
-              <CheckCircle2 className="mr-2 h-6 w-6" /> Downloaded
+              <CheckCircle2 className="mr-2 h-6 w-6" /> {text.download.downloaded}
             </>
           )}
         </Button>

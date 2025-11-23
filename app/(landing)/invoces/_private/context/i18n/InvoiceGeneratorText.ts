@@ -1,0 +1,130 @@
+export interface InvoiceGeneratorText {
+  landing: {
+    title: string;
+    titleHighlight: string;
+    generateInvoice: string;
+    github: string;
+    trustedBy: string;
+    users: string;
+    download: string;
+    invoices: string;
+    whyLove: string;
+    fastEasyTitle: string;
+    fastEasyDescription: string;
+    freeUnlimitedTitle: string;
+    freeUnlimitedDescription: string;
+    beautifulTemplatesTitle: string;
+    beautifulTemplatesDescription: string;
+    getPaidFasterTitle: string;
+    getPaidFasterDescription: string;
+    saveTimeMoneyTitle: string;
+    saveTimeMoneyDescription: string;
+    freeOpenSourceTitle: string;
+    freeOpenSourceDescription: string;
+    ctaMessage: string;
+    generateToday: string;
+  };
+  forms: {
+    yourDetails: {
+      title: string;
+      email: string;
+      emailPlaceholder: string;
+      autoFillMessage: string;
+      billingDetails: string;
+      yourName: string;
+      yourNamePlaceholder: string;
+      logo: string;
+      address: string;
+      addressPlaceholder: string;
+      city: string;
+      cityPlaceholder: string;
+      state: string;
+      statePlaceholder: string;
+      zip: string;
+      zipPlaceholder: string;
+      country: string;
+      countryPlaceholder: string;
+      taxId: string;
+      taxIdPlaceholder: string;
+    };
+    companyDetails: {
+      title: string;
+      email: string;
+      emailPlaceholder: string;
+      autoFillMessage: string;
+      billingDetails: string;
+      companyName: string;
+      companyNamePlaceholder: string;
+      logo: string;
+      address: string;
+      addressPlaceholder: string;
+      city: string;
+      cityPlaceholder: string;
+      state: string;
+      statePlaceholder: string;
+      zip: string;
+      zipPlaceholder: string;
+      country: string;
+      countryPlaceholder: string;
+      taxId: string;
+      taxIdPlaceholder: string;
+    };
+    invoiceDetails: {
+      title: string;
+      selectCurrency: string;
+      items: string;
+      itemName: string;
+      quantity: string;
+      price: string;
+      addItem: string;
+      note: string;
+      notePlaceholder: string;
+      moreOptions: string;
+      discount: string;
+      taxes: string;
+    };
+    paymentDetails: {
+      title: string;
+      bankName: string;
+      bankNamePlaceholder: string;
+      accountNumber: string;
+      accountNumberPlaceholder: string;
+      accountName: string;
+      accountNamePlaceholder: string;
+      ifscCode: string;
+      ifscCodePlaceholder: string;
+      routingNumber: string;
+      routingNumberPlaceholder: string;
+      swiftCode: string;
+      swiftCodePlaceholder: string;
+    };
+    invoiceTerms: {
+      title: string;
+      invoiceNumber: string;
+      invoiceNumberPlaceholder: string;
+      issueDate: string;
+      dueDate: string;
+    };
+  };
+  navigation: {
+    back: string;
+    next: string;
+    yourDetails: string;
+    companyDetails: string;
+    invoiceDetails: string;
+    paymentDetails: string;
+    invoiceTerms: string;
+    reviewDownload: string;
+  };
+  download: {
+    title: string;
+    description: string;
+    downloadInvoice: string;
+    downloading: string;
+    downloaded: string;
+  };
+  common: {
+    invoiceGenerator: string;
+    byProlab: string;
+  };
+}

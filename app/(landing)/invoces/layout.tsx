@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { GeistSans } from "geist/font/sans";
-import Script from "next/script";
+import { InvoiceGeneratorTranslationProvider } from "./(landing)/invoces/_private/context/i18n/InvoiceGeneratorTranslationContext";
+import { loadInvoiceGeneratorText } from "./(landing)/invoces/_private/context/i18n/loadContactCenterV2Text";
 
 export const viewport: Viewport = {
   themeColor: "#f97316",
@@ -10,7 +11,6 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_URL!),
   alternates: {
     canonical: "/",
     languages: {
@@ -46,11 +46,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const text = await loadInvoiceGeneratorText('en');
+  
   return (
     <html lang="en">
       <head>
@@ -76,7 +78,11 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#f97316" />
         <meta name="theme-color" content="#f97316" />
       </head>
-      <body className={`${GeistSans.className}`}>{children}</body>
+      <body className={`${GeistSans.className}`}>
+        <InvoiceGeneratorTranslationProvider locale="en" text={text}>
+          {children}
+        </InvoiceGeneratorTranslationProvider>
+      </body>
     </html>
   );
 }

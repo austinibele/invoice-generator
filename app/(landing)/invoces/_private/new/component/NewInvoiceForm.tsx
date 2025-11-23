@@ -5,8 +5,10 @@ import { FormSteps } from "@/app/component/form/step/fromSteps";
 import { UserDataPreview } from "@/app/new/component/userDataPreview";
 import { useForm, FormProvider } from "react-hook-form";
 import { useEffect, useState } from "react";
+import { useInvoiceGeneratorTranslations } from "@/app/(landing)/invoces/_private/context/i18n/InvoiceGeneratorTranslationContext";
 
 export const NewInvoiceForm = () => {
+  const text = useInvoiceGeneratorTranslations();
   const methods = useForm();
   const [isClient, setIsClient] = useState(false);
 
@@ -38,8 +40,8 @@ export const NewInvoiceForm = () => {
                   alt="logo"
                 />
                 <div>
-                  <p className="font-semibold">Invoice Generator</p>
-                  <p className="text-orange-500 text-sm">By Prolab</p>
+                  <p className="font-semibold">{text.common.invoiceGenerator}</p>
+                  <p className="text-orange-500 text-sm">{text.common.byProlab}</p>
                 </div>
               </div>
               <UserInputForm />

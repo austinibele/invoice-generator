@@ -1,4 +1,4 @@
-import { PreviewDetails } from "@/app/component/form/previewDetails";
+import { PreviewDetails } from "@/app/(landing)/invoces/_private/component/form/previewDetails";
 
 const DemoPreview = () => (
   <div className="mx-auto w-full flex justify-center items-center">
